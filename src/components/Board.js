@@ -5,9 +5,10 @@ import Column from './Column';
 import DisplayMessage from './DisplayMessage';
 import Game from '../util/Game';
 import getLowestEmptyCellIndex from '../services/Array.service';
+import appStyle from '../config/appStyle';
 
 const styles = {
-  container: {
+  boardContainer: {
     display: 'flex',
     backgroundColor: '#d2f0fb',
     width: '100%',
@@ -15,6 +16,29 @@ const styles = {
   },
   board: {
     display: 'flex',
+  },
+  boardFoot: {
+    height: 120,
+    width: 30,
+    backgroundColor: appStyle.colors.blue,
+    alignSelf: 'flex-end',
+  },
+  underBoard: {
+    height: 60,
+    width: 560,
+    backgroundColor: appStyle.colors.white,
+  },
+  underBoardFoot: {
+    height: 60,
+    width: 30,
+    backgroundColor: appStyle.colors.blue,
+    alignSelf: 'flex-end',
+  },
+  footer: {
+    display: 'flex',
+    backgroundColor: '#d2f0fb',
+    width: '100%',
+    justifyContent: 'center',
   },
 }
 
@@ -104,18 +128,27 @@ class Board extends React.Component<*, State> {
   render() {
     const { message } = this.state;
     return (
-      <div style={styles.container}>
-        <DisplayMessage message={message}/>
-        <div style={styles.board}>
-          {this.state.board.map((column, index) =>
-            <Column
-              key={index}
-              column={column}
-              onMouseEnter={!message ? () => this.onColumnEnter(index) : () => {}}
-              onMouseLeave={!message ? () => this.onColumnLeave(index) : () => {}}
-              onClick={() => this.onColumnClick(index)}
-            />,
-          )}
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={styles.boardContainer}>
+          <DisplayMessage message={message}/>
+          <div style={styles.boardFoot} />
+          <div style={styles.board}>
+            {this.state.board.map((column, index) =>
+              <Column
+                key={index}
+                column={column}
+                onMouseEnter={!message ? () => this.onColumnEnter(index) : () => {}}
+                onMouseLeave={!message ? () => this.onColumnLeave(index) : () => {}}
+                onClick={() => this.onColumnClick(index)}
+              />,
+            )}
+          </div>
+          <div style={styles.boardFoot} />
+        </div>
+        <div style={styles.footer}>
+          <div style={styles.underBoardFoot} />
+          <div style={styles.underBoard} />
+          <div style={styles.underBoardFoot} />
         </div>
       </div>
     );
