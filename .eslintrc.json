@@ -2,7 +2,6 @@
     "extends": ["airbnb-base", "plugin:flowtype/recommended", "plugin:react/recommended"],
     "plugins": ["flowtype", "eslint-plugin-react"],
     "rules": {
-        "comma-dangle": 0,
         "flowtype/define-flow-type": 1,
         "flowtype/use-flow-type": 1,
         "function-paren-newline": 0,
