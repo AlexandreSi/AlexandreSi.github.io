@@ -1,8 +1,9 @@
 {
   "name": "app",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "http://AlexandreSi.github.io/",
   "private": true,
+  "main": "./public/index.html",
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -19,7 +20,8 @@
     "flow stop": "flow stop",
     "flow status": "flow status",
     "flow coverage": "flow coverage",
-    "api-build": "./node_modules/flow-remove-types/flow-remove-types src/ --out-dir dest/;node dest/index.js;"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
@@ -32,6 +34,7 @@
     "eslint-plugin-react": "^7.6.1",
     "flow": "^0.2.3",
     "flow-bin": "^0.65.0",
+    "gh-pages": "^1.1.0",
     "prettier": "^1.10.2"
   }
 }
